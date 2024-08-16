@@ -1,9 +1,21 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./pages/Home/Home";
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold text-blue-900 underline">
-        Hello world!
-      </h1>
+      <NavBar />
+      <BrowserRouter>
+        <div className='min-h-[70vh]'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+      <Footer />
     </>
   );
 }
