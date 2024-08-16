@@ -5,10 +5,15 @@ import Home from "./pages/Home/Home";
 import ListaCategorias from "./components/Categorias/listaCategorias/ListaCategorias";
 import FormularioCategorias from "./components/Categorias/formularioCategorias/FormularioCategorias";
 import DeletarCategoria from "./components/Categorias/deletarCategoria/DeletarCategoria";
+import { ToastContainer } from "react-toastify";
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
     <>
+      <ToastContainer />
       <BrowserRouter>
         <NavBar />
         <div className='min-h-[70vh]'>

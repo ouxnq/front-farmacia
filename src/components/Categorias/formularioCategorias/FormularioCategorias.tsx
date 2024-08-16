@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Categoria from '../../../models/Categoria';
 import { atualizar, buscar, cadastrar } from '../../../services/Service';
+import { toastAlerta } from '../../../util/toastAlerta';
 
 function FormularioCategorias() {
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
@@ -38,25 +39,25 @@ function FormularioCategorias() {
                 await atualizar(`/categorias`, categoria, setCategoria
                 )
 
-                alert('Categoria atualizado com sucesso')
+                toastAlerta('Categoria atualizado com sucesso', 'sucesso')
                 retornar()
 
             } catch (error: any) {
 
-                alert('Erro ao atualizar o Categoria')
+                toastAlerta('Erro ao atualizar o Categoria', 'erro')
             }
 
         } else {
             try {
                 await cadastrar(`/categorias`, categoria, setCategoria)
 
-                alert('Categoria cadastrada com sucesso')
+                toastAlerta('Categoria cadastrada com sucesso', 'sucesso')
                 retornar()
 
 
             } catch (error: any) {
 
-                alert('Erro ao cadastrar a Categoria')
+                toastAlerta('Erro ao cadastrar a Categoria', 'erro')
             }
         }
     }
@@ -80,7 +81,7 @@ function FormularioCategorias() {
 
             <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovaCategoria}>
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="descricao">Nome da Categoria</label>
+                    <label htmlFor="nome">Nome da Categoria</label>
                     <input
                         type="text"
                         placeholder="Nome"
